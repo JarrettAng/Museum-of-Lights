@@ -12,9 +12,23 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private float m_maxSpeed = 5.0f;
 
+    public bool m_Enabled { get; set; }
+
+    private void Awake() {
+        m_Enabled = true;
+    }
+
+    private void Start() {
+        m_rb.maxLinearVelocity = m_maxSpeed;
+    }
+
     private void Update() {
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
+        float horizontal = 0.0f, vertical = 0.0f;
+
+        if (m_Enabled) {
+            horizontal = Input.GetAxisRaw("Horizontal");
+            vertical = Input.GetAxisRaw("Vertical");
+        }
 
         Vector2 direction = Vector2.zero;
         direction.x = (horizontal > 0.1f) ? 1 : (horizontal < -0.1f) ? -1 : 0;
@@ -29,10 +43,6 @@ public class PlayerMovement : MonoBehaviour
             // Move the player horizontally, transform forward and right
             m_rb.AddForce(transform.forward * direction.y, ForceMode.VelocityChange);
             m_rb.AddForce(transform.right * direction.x, ForceMode.VelocityChange);
-
-            // Clamp the player's horiontal speeed
-            m_rb.linearVelocity = new Vector3(Mathf.Clamp(m_rb.linearVelocity.x, -m_maxSpeed, m_maxSpeed), m_rb.linearVelocity.y, Mathf.Clamp(m_rb.linearVelocity.z, -m_maxSpeed, m_maxSpeed));
-
         }
         else {
             m_animator.SetBool("Moving", false);
