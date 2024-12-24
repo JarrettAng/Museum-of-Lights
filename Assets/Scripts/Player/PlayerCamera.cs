@@ -20,10 +20,11 @@ public class PlayerCamera : MonoBehaviour
     }
 
     private void Update() {
-        if (!m_Enabled) return;
+        if (m_Enabled) { 
+            m_rotation.x -= Input.GetAxisRaw("Mouse Y") * m_speed;
+            m_rotation.y += Input.GetAxisRaw("Mouse X") * m_speed;
+        }
         
-        m_rotation.x -= Input.GetAxisRaw("Mouse Y") * m_speed;
-        m_rotation.y += Input.GetAxisRaw("Mouse X") * m_speed;
 
         m_rotation.x = Mathf.Clamp(m_rotation.x, m_upDownLimit.x, m_upDownLimit.y);
         SetRotation(m_rotation);

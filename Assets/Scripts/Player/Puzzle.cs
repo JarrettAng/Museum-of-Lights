@@ -53,12 +53,6 @@ public class Puzzle : MonoBehaviour
             transform.Rotate(r_ViewAngle.up, input.y * m_rotationSpeed * Time.deltaTime, Space.World);
             transform.Rotate(r_ViewAngle.right, input.x * m_rotationSpeed * Time.deltaTime, Space.World);
             transform.Rotate(r_ViewAngle.forward, input.z * m_rotationSpeed * Time.deltaTime, Space.World);
-
-            //if (input.sqrMagnitude > 0.1f) {
-            //    input *= m_rotationSpeed * Time.deltaTime;
-            //    transform.Rotate(input, Space.Self);
-            //}
-
         }
 
         void CheckStatus() {
@@ -79,7 +73,7 @@ public class Puzzle : MonoBehaviour
             if (m_lockInTimer > m_lockInTime) {
                 if (!m_lockedIn) {
                     m_lockedIn = true;
-                    Debug.LogFormat("Locked in angle {0}", Quaternion.Angle(transform.rotation, r_correctRotation.rotation));
+                    //Debug.LogFormat("Locked in angle {0}", Quaternion.Angle(transform.rotation, r_correctRotation.rotation));
 
                     if (Quaternion.Angle(transform.rotation, r_correctRotation.rotation) < m_tolerance) {
                         m_solved = true;
