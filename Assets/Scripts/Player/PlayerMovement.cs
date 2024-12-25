@@ -18,10 +18,6 @@ public class PlayerMovement : MonoBehaviour
         m_Enabled = true;
     }
 
-    private void Start() {
-        m_rb.maxLinearVelocity = m_maxSpeed;
-    }
-
     private void Update() {
         float horizontal = 0.0f, vertical = 0.0f;
 
@@ -49,6 +45,17 @@ public class PlayerMovement : MonoBehaviour
 
             // Stop the player moving horizontally
             m_rb.linearVelocity = new Vector3(0.0f, m_rb.linearVelocity.y, 0.0f);
+        }
+    }
+
+    private void FixedUpdate() {
+        Vector3 velocity = m_rb.linearVelocity;
+        Vector2 horizontalVelocity = new Vector2(velocity.x, velocity.z);
+
+        // Clamp if horizontal speed exceeds the limit
+        if (horizontalVelocity.magnitude > m_maxSpeed) {
+            horizontalVelocity = horizontalVelocity.normalized * m_maxSpeed;
+            m_rb.linearVelocity = new Vector3(horizontalVelocity.x, velocity.y, horizontalVelocity.y);
         }
     }
 }
