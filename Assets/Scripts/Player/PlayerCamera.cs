@@ -19,6 +19,11 @@ public class PlayerCamera : MonoBehaviour
         m_Enabled = true;
     }
 
+    private void Start() {
+        // Set initial rotation
+        m_rotation = transform.rotation.eulerAngles;
+    }
+
     private void Update() {
         if (m_Enabled) { 
             m_rotation.x -= Input.GetAxisRaw("Mouse Y") * m_speed;
