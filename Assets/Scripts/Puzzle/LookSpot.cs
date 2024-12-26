@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LookSpot : MonoBehaviour
+public class LookSpot : Spot
 {
     [SerializeField]
     public bool m_horizontal;
@@ -10,18 +10,9 @@ public class LookSpot : MonoBehaviour
 
     [SerializeField]
     private RotationPuzzle r_puzzle;
-    [SerializeField]
-    private Transform r_lookRotation;
 
     [SerializeField]
     private Image[] r_arrowIcons; // 0 is up, 1 is right, 2 is down, 3 is left
-
-    [SerializeField]
-    private float m_lockInTime = 1.0f;
-    [SerializeField]
-    private float m_lockInTimer = 0.0f;
-
-    private Vector3 m_input = Vector3.zero;
 
     private void Start() {
         if (m_horizontal) {
@@ -34,12 +25,8 @@ public class LookSpot : MonoBehaviour
         }
     }
 
-    public void EnterPuzzle() {
-        r_puzzle.enabled = true;
-    }
-
     public void Update() {
-        if (!r_puzzle.enabled) return;
+        if (!m_currentlyActive) return;
 
         HandleInput();
         CheckLockIn();
@@ -89,11 +76,13 @@ public class LookSpot : MonoBehaviour
         }
     }
 
-    public void ExitPuzzle() {
-        r_puzzle.enabled = false;
+    public override void EnterPuzzle() {
+        r_puzzle.enabled = true;
+        m_currentlyActive = true;
     }
 
-    public Quaternion GetLookRotation() {
-        return r_lookRotation.rotation;
+    public override void ExitPuzzle() {
+        r_puzzle.enabled = false;
+        m_currentlyActive = false;
     }
 }

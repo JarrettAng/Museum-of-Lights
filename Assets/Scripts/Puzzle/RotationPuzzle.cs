@@ -13,11 +13,14 @@ public class RotationPuzzle : Puzzle
     new void Update() {
         base.Update();
 
-        if (m_correctRot) return;
+        if (m_solvedOnce && m_correctRot) return;
 
         if (m_LockedIn) {
             if (Quaternion.Angle(transform.rotation, r_correctRotation.rotation) < m_tolerance) {
                 m_correctRot = true;
+            }
+            else {
+                m_correctRot = false;
             }
         }
     }
