@@ -134,9 +134,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc4d76f733087744991913c9d19d5274, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_LensFlareData: {fileID: 11400000, guid: bd7eaf3bd49c39f4cb77bd809459aa72, type: 2}
+  m_LensFlareData: {fileID: 11400000, guid: 5221b54b9d6833e49bad51c43ca738b2, type: 2}
   version: 0
-  intensity: 1
+  intensity: 0.5
   maxAttenuationDistance: 100
   maxAttenuationScale: 100
   distanceAttenuationCurve:
@@ -212,14 +212,14 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  useOcclusion: 0
+  useOcclusion: 1
   useBackgroundCloudOcclusion: 0
   environmentOcclusion: 0
   useWaterOcclusion: 0
   occlusionRadius: 0.1
   sampleCount: 32
   occlusionOffset: 0.05
-  scale: 1
+  scale: 0.2
   allowOffScreen: 0
   volumetricCloudOcclusion: 0
   occlusionRemapCurve:

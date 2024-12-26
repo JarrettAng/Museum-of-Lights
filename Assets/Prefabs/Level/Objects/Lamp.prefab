@@ -122,7 +122,7 @@ GameObject:
   - component: {fileID: 4196152042650970054}
   - component: {fileID: 928785430667592594}
   - component: {fileID: 4903336102780676836}
-  - component: {fileID: 1081744668429612405}
+  - component: {fileID: 4065103517462601949}
   m_Layer: 7
   m_Name: Point Light
   m_TagString: Untagged
@@ -233,7 +233,7 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
---- !u!114 &1081744668429612405
+--- !u!114 &4065103517462601949
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -245,9 +245,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc4d76f733087744991913c9d19d5274, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_LensFlareData: {fileID: 11400000, guid: bd7eaf3bd49c39f4cb77bd809459aa72, type: 2}
+  m_LensFlareData: {fileID: 11400000, guid: 5221b54b9d6833e49bad51c43ca738b2, type: 2}
   version: 0
-  intensity: 1
+  intensity: 0.5
   maxAttenuationDistance: 100
   maxAttenuationScale: 100
   distanceAttenuationCurve:
@@ -323,14 +323,14 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  useOcclusion: 0
+  useOcclusion: 1
   useBackgroundCloudOcclusion: 0
   environmentOcclusion: 0
   useWaterOcclusion: 0
   occlusionRadius: 0.1
   sampleCount: 32
   occlusionOffset: 0.05
-  scale: 1
+  scale: 0.2
   allowOffScreen: 0
   volumetricCloudOcclusion: 0
   occlusionRemapCurve:

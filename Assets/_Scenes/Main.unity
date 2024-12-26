@@ -5855,7 +5855,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &179752939
 Transform:
   m_ObjectHideFlags: 0
@@ -5901,7 +5901,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 179752938}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 11
   m_Type: 0
   m_Color: {r: 1, g: 0.9019608, b: 0.8039216, a: 1}
@@ -40715,14 +40715,18 @@ PrefabInstance:
     - target: {fileID: 1696722867463313681, guid: 282d3225bcfd93940b6b57167e0473eb, type: 3}
       propertyPath: r_puzzle
       value: 
-      objectReference: {fileID: 1515622007}
+      objectReference: {fileID: 1515622008}
     - target: {fileID: 1696722867463313681, guid: 282d3225bcfd93940b6b57167e0473eb, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1696722867463313681, guid: 282d3225bcfd93940b6b57167e0473eb, type: 3}
+      propertyPath: m_vertical
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4182714873431611830, guid: 282d3225bcfd93940b6b57167e0473eb, type: 3}
       propertyPath: m_Name
-      value: PhotoSpot
+      value: RotationSpot
       objectReference: {fileID: 0}
     - target: {fileID: 4182714873431611830, guid: 282d3225bcfd93940b6b57167e0473eb, type: 3}
       propertyPath: m_TagString
@@ -48096,9 +48100,13 @@ PrefabInstance:
       propertyPath: r_puzzle
       value: 
       objectReference: {fileID: 2018223081}
+    - target: {fileID: 1696722867463313681, guid: 282d3225bcfd93940b6b57167e0473eb, type: 3}
+      propertyPath: m_horizontal
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4182714873431611830, guid: 282d3225bcfd93940b6b57167e0473eb, type: 3}
       propertyPath: m_Name
-      value: PhotoSpot (1)
+      value: RotationSpot
       objectReference: {fileID: 0}
     - target: {fileID: 4182714873431611830, guid: 282d3225bcfd93940b6b57167e0473eb, type: 3}
       propertyPath: m_TagString
@@ -55340,7 +55348,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1515622006}
-  - component: {fileID: 1515622007}
+  - component: {fileID: 1515622008}
   m_Layer: 0
   m_Name: Puzzle
   m_TagString: Untagged
@@ -55364,7 +55372,7 @@ Transform:
   - {fileID: 158668559}
   m_Father: {fileID: 641427831}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1515622007
+--- !u!114 &1515622008
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -55373,7 +55381,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1515622005}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4bda99d99c9a77c4984c6f616df4f86e, type: 3}
+  m_Script: {fileID: 11500000, guid: e55e11bc43063964398d068a5ab87935, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   OnSolve:
@@ -55403,13 +55411,11 @@ MonoBehaviour:
           m_StringArgument: Solved
           m_BoolArgument: 0
         m_CallState: 2
-  m_Horizontal: 0
-  m_Vertical: 1
+  m_LockedIn: 0
+  m_solved: 0
   r_correctRotation: {fileID: 1903665515}
-  m_tolerance: 35
-  m_rotationSpeed: 120
-  m_lockInTime: 1
-  r_ViewAngle: {fileID: 0}
+  m_tolerance: 40
+  m_RotationSpeed: 120
 --- !u!1001 &1515858039
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -72775,7 +72781,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2018223079}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4bda99d99c9a77c4984c6f616df4f86e, type: 3}
+  m_Script: {fileID: 11500000, guid: e55e11bc43063964398d068a5ab87935, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   OnSolve:
@@ -72805,13 +72811,11 @@ MonoBehaviour:
           m_StringArgument: Solved
           m_BoolArgument: 0
         m_CallState: 2
-  m_Horizontal: 1
-  m_Vertical: 0
+  m_LockedIn: 0
+  m_solved: 0
   r_correctRotation: {fileID: 927558493}
-  m_tolerance: 10
-  m_rotationSpeed: 80
-  m_lockInTime: 1
-  r_ViewAngle: {fileID: 0}
+  m_tolerance: 5
+  m_RotationSpeed: 80
 --- !u!1 &2018319854
 GameObject:
   m_ObjectHideFlags: 0
@@ -78168,9 +78172,13 @@ PrefabInstance:
       propertyPath: r_puzzle
       value: 
       objectReference: {fileID: 2018223081}
+    - target: {fileID: 1696722867463313681, guid: 282d3225bcfd93940b6b57167e0473eb, type: 3}
+      propertyPath: m_horizontal
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4182714873431611830, guid: 282d3225bcfd93940b6b57167e0473eb, type: 3}
       propertyPath: m_Name
-      value: PhotoSpot
+      value: RotationSpot
       objectReference: {fileID: 0}
     - target: {fileID: 4182714873431611830, guid: 282d3225bcfd93940b6b57167e0473eb, type: 3}
       propertyPath: m_TagString
