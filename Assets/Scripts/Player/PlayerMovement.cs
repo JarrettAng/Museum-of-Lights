@@ -12,6 +12,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private float m_maxSpeed = 5.0f;
 
+    [SerializeField]
+    FootstepAudio m_footstepAudio;
+
     public bool m_Enabled { get; set; }
 
     private void Awake() {
@@ -39,6 +42,8 @@ public class PlayerMovement : MonoBehaviour
             // Move the player horizontally, transform forward and right
             m_rb.AddForce(transform.forward * direction.y, ForceMode.VelocityChange);
             m_rb.AddForce(transform.right * direction.x, ForceMode.VelocityChange);
+
+            m_footstepAudio.PlayFootstep();
         }
         else {
             m_animator.SetBool("Moving", false);
