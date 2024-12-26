@@ -5,12 +5,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private Animator m_animator;
     [SerializeField]
-    private Rigidbody m_rb;
+    private CharacterController m_cc;
 
     [SerializeField]
     private float m_speed = 5.0f;
     [SerializeField]
     private float m_maxSpeed = 5.0f;
+    [SerializeField]
+    private float m_gravity = 9.81f;
 
     [SerializeField]
     FootstepAudio m_footstepAudio;
@@ -40,8 +42,20 @@ public class PlayerMovement : MonoBehaviour
             direction.y *= m_speed * Time.deltaTime;
 
             // Move the player horizontally, transform forward and right
-            m_rb.AddForce(transform.forward * direction.y, ForceMode.VelocityChange);
-            m_rb.AddForce(transform.right * direction.x, ForceMode.VelocityChange);
+            Vector3 dir = Vector3.zero;
+            dir += transform.forward * direction.y;
+            dir += transform.right * direction.x;
+
+            // Clamp if horizontal speed exceeds the limit
+            if (dir.sqrMagnitude > m_maxSpeed * m_maxSpeed) {
+                dir = dir.normalized * m_maxSpeed;
+            }
+
+            dir += Vector3.down * m_gravity * Time.deltaTime;
+            m_cc.Move(dir);
+
+            //m_rb.AddForce(transform.forward * direction.y, ForceMode.VelocityChange);
+            //m_rb.AddForce(transform.right * direction.x, ForceMode.VelocityChange);
 
             m_footstepAudio.PlayFootstep();
         }
@@ -49,18 +63,19 @@ public class PlayerMovement : MonoBehaviour
             m_animator.SetBool("Moving", false);
 
             // Stop the player moving horizontally
-            m_rb.linearVelocity = new Vector3(0.0f, m_rb.linearVelocity.y, 0.0f);
+            //m_rb.linearVelocity = new Vector3(0.0f, m_rb.linearVelocity.y, 0.0f);
+            m_cc.Move(Vector3.zero);
         }
     }
 
-    private void FixedUpdate() {
-        Vector3 velocity = m_rb.linearVelocity;
-        Vector2 horizontalVelocity = new Vector2(velocity.x, velocity.z);
+    //private void FixedUpdate() {
+    //    //Vector3 velocity = m_rb.linearVelocity;
+    //    //Vector2 horizontalVelocity = new Vector2(velocity.x, velocity.z);
 
-        // Clamp if horizontal speed exceeds the limit
-        if (horizontalVelocity.magnitude > m_maxSpeed) {
-            horizontalVelocity = horizontalVelocity.normalized * m_maxSpeed;
-            m_rb.linearVelocity = new Vector3(horizontalVelocity.x, velocity.y, horizontalVelocity.y);
-        }
-    }
+    //    //// Clamp if horizontal speed exceeds the limit
+    //    //if (horizontalVelocity.magnitude > m_maxSpeed) {
+    //    //    horizontalVelocity = horizontalVelocity.normalized * m_maxSpeed;
+    //    //    m_rb.linearVelocity = new Vector3(horizontalVelocity.x, velocity.y, horizontalVelocity.y);
+    //    //}
+    //}
 }

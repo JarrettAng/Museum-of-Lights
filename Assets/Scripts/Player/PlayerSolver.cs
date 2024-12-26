@@ -8,7 +8,7 @@ public class PlayerSolver : MonoBehaviour
     [SerializeField]
     private PlayerCamera r_pCamera;
 
-    private LookSpot r_currentLookSpot = null;
+    private Spot r_currentLookSpot = null;
     private bool m_puzzleMode = false;
 
     private Coroutine m_lookAnim = null;
@@ -46,7 +46,7 @@ public class PlayerSolver : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) {
         if (other.CompareTag("Puzzle")) {
-            r_currentLookSpot = other.GetComponent<LookSpot>();
+            r_currentLookSpot = other.GetComponent<Spot>();
         }
     }
 
