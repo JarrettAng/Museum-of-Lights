@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LookSpot : Spot
+public class LightSpot : Spot
 {
     [SerializeField]
     public bool m_horizontal;
