@@ -17,7 +17,8 @@ public class TriggerManager : MonoBehaviour
     }
 
     public void Trigger2HalfSecDelay(int index) {
-        StartCoroutine(TriggerEvent(index, 2.5f));
+        // Was 2 1/2 but I changed to 4
+        StartCoroutine(TriggerEvent(index, 4f));
     }
 
     private IEnumerator TriggerEvent(int index, float delay) {

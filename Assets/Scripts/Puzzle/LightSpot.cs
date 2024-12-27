@@ -16,6 +16,10 @@ public class LightSpot : Spot
 
     [SerializeField]
     private bool m_solveableFromThisSpot = true;
+    [SerializeField]
+    private bool m_invertedX = false;
+    [SerializeField]
+    private bool m_intertedY = false;
 
     private void Start() {
         if (m_horizontal) {
@@ -41,18 +45,25 @@ public class LightSpot : Spot
 
             // Keyboard rotation
             if (m_vertical) {
-                if (Input.GetKey(KeyCode.W)) m_input.x += 1f; // W S: Rotate around X axis
-                if (Input.GetKey(KeyCode.S)) m_input.x -= 1f;
+                if (m_intertedY) {
+                    if (Input.GetKey(KeyCode.W)) m_input.x -= 1f; // W S: Rotate around X axis
+                    if (Input.GetKey(KeyCode.S)) m_input.x += 1f;
+                }
+                else {
+                    if (Input.GetKey(KeyCode.W)) m_input.x += 1f; // W S: Rotate around X axis
+                    if (Input.GetKey(KeyCode.S)) m_input.x -= 1f;
+                }
             }
 
             if (m_horizontal) {
-                if (Input.GetKey(KeyCode.A)) m_input.y += 1f; // A D: Rotate around Y axis
-                if (Input.GetKey(KeyCode.D)) m_input.y -= 1f;
-            }
-
-            if (m_horizontal && m_vertical) {
-                if (Input.GetKey(KeyCode.Q)) m_input.z += 1f; // Q E: Rotate around Z axis
-                if (Input.GetKey(KeyCode.E)) m_input.z -= 1f;
+                if (m_invertedX) {
+                    if (Input.GetKey(KeyCode.D)) m_input.y += 1f; // A D: Rotate around Y axis
+                    if (Input.GetKey(KeyCode.A)) m_input.y -= 1f;
+                }
+                else {
+                    if (Input.GetKey(KeyCode.A)) m_input.y += 1f; // A D: Rotate around Y axis
+                    if (Input.GetKey(KeyCode.D)) m_input.y -= 1f;
+                }
             }
 
             r_puzzle.transform.Rotate(r_lookRotation.up, m_input.y * r_puzzle.m_RotationSpeed * Time.deltaTime, Space.World);
@@ -65,10 +76,10 @@ public class LightSpot : Spot
             if (m_input.sqrMagnitude < 0.1f) {
                 if (m_lockInTimer < m_lockInTime) {
                     m_lockInTimer += Time.deltaTime;
-                    r_puzzle.m_LockedIn = false;
                 }
             }
             else {
+                r_puzzle.m_LockedIn = false;
                 m_lockInTimer = 0.0f;
             }
 
