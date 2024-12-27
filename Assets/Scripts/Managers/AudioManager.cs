@@ -11,9 +11,9 @@ public class AudioManager : MonoBehaviour
         masterMixer.SetFloat("MasterParam", _volume);
     }
 
-    public void SetSoundLevel(float _volume)
+    public void SetSFXLevel(float _volume)
     {
-        masterMixer.SetFloat("SoundParam", _volume);
+        masterMixer.SetFloat("SFXParam", _volume);
     }
 
     public void SetMusicLevel(float _volume)

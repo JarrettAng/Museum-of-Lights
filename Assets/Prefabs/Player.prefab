@@ -285,7 +285,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: f5df9feebdc123c4aa3e1912ed0e1e01, type: 3}
   m_Resource: {fileID: 8300000, guid: f5df9feebdc123c4aa3e1912ed0e1e01, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.25
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -471,10 +471,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 006e9f37239969f418769f87de0e7d00, type: 3}
   - {fileID: 8300000, guid: b723c47eb0cf2404987625e30c00f20a, type: 3}
   - {fileID: 8300000, guid: 74386c9f97ca1cd4d9d5ce4a5b4c325f, type: 3}
-  solvingPuzzle: {fileID: 0}
-  solvedPuzzle: {fileID: 0}
-  rotatingPuzzle: {fileID: 0}
-  clickSound: {fileID: 0}
+  solvedPuzzle: {fileID: 8300000, guid: b491431604dc3424da8f0ecd14ac6e50, type: 3}
+  lockedIn: {fileID: 8300000, guid: 3f3808862ef312140a6b96ab34e24a80, type: 3}
   source:
   - {fileID: 7600956796618029795}
   - {fileID: 4472964417602991437}
@@ -684,7 +682,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: cb285bcd80b078c4dbdea4530cd6f3b7, type: 3}
   m_Resource: {fileID: 8300000, guid: cb285bcd80b078c4dbdea4530cd6f3b7, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.25
   m_Pitch: 1
   Loop: 1
   Mute: 0

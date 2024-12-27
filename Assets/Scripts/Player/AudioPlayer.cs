@@ -31,10 +31,8 @@ public class AudioPlayer : MonoBehaviour
     public List<AudioClip> presentFS;
 
     [Header("SFX")]
-    public AudioClip solvingPuzzle;
     public AudioClip solvedPuzzle;
-    public AudioClip rotatingPuzzle;
-    public AudioClip clickSound;
+    public AudioClip lockedIn;
 
     public List<AudioSource> source;
     AudioClip previousClip;
@@ -172,21 +170,13 @@ public class AudioPlayer : MonoBehaviour
         previousClip = selectedClip;
         return selectedClip;
     }
-    void PlayRotation()
-    {
-        source[(int)AudioPlayers.SFX].PlayOneShot(rotatingPuzzle, 1.0f);
-    }
-    void PlaySolvingMode()
-    {
-        source[(int)AudioPlayers.SFX].PlayOneShot(solvingPuzzle, 1.0f);
-    }
     void PlaySolved()
     {
         source[(int)AudioPlayers.SFX].PlayOneShot(solvedPuzzle, 1.0f);
     }
     void PlayLockedIn()
     {
-        source[(int)AudioPlayers.SFX].PlayOneShot(solvedPuzzle, 1.0f);
+        source[(int)AudioPlayers.SFX].PlayOneShot(lockedIn, 1.0f);
     }
 
 
