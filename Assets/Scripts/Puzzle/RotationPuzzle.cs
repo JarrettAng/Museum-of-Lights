@@ -3,11 +3,14 @@ using UnityEngine;
 public class RotationPuzzle : Puzzle
 {
     [SerializeField]
-    private Transform r_correctRotation;
+    // Hacked for game jam
+    public Transform r_correctRotation;
     [SerializeField]
-    private float m_tolerance = 5f;
+    // Hacked for game jam
+    public float m_tolerance = 5f;
 
     public float m_RotationSpeed = 80.0f;
+
     private bool m_correctRot = false;
 
     new void Update() {

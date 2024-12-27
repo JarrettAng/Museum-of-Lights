@@ -58,8 +58,7 @@ public class FootstepAudio : MonoBehaviour
     void Start()
     {
         t = Terrain.activeTerrain;
-        playerTransform = gameObject.transform;
-        source = gameObject.GetComponent<AudioSource>();
+        playerTransform = transform;
         textureValues = new float[5];
     }
     public void GetTerrainTexture()
@@ -105,9 +104,6 @@ public class FootstepAudio : MonoBehaviour
             return;
 
         FSSurface surface = CheckSurface();
-
-        Debug.Log(surface.ToString());
-
         source.pitch = Random.Range(0.8f, 1.2f);
 
         switch(surface)

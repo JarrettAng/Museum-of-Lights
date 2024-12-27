@@ -1,7 +1,15 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ColorSpot : Spot 
 {
+    // Hack to change skybox color
+    public UnityEvent m_OnColorChange;
+    [SerializeField]
+    private Skybox m_skybox;
+    [SerializeField]
+    private Material[] m_skyboxMaterial;
+
     [SerializeField]
     private Light r_light;
     [SerializeField]
@@ -36,6 +44,7 @@ public class ColorSpot : Spot
                 if (m_currentColor >= m_colors.Length) m_currentColor = 0;
 
                 r_light.color = m_colors[m_currentColor];
+                m_OnColorChange.Invoke();
             }
         }
 
@@ -44,11 +53,13 @@ public class ColorSpot : Spot
             if (m_input.sqrMagnitude < 0.1f) {
                 if (m_lockInTimer < m_lockInTime) {
                     m_lockInTimer += Time.deltaTime;
-                    r_puzzle.m_LockedIn = false;
+                    m_ui.SetLockInProgress(m_lockInTimer / m_lockInTime);
                 }
             }
             else {
+                r_puzzle.m_LockedIn = false;
                 m_lockInTimer = 0.0f;
+                m_ui.SetLockInProgress(0.0f);
             }
 
             // If locked in, check if the player has solved the puzzle
@@ -68,5 +79,9 @@ public class ColorSpot : Spot
     public override void ExitPuzzle() {
         r_puzzle.enabled = false;
         m_currentlyActive = false;
+    }
+
+    public void ChangeSkyColor() {
+        m_skybox.material = m_skyboxMaterial[m_currentColor];
     }
 }

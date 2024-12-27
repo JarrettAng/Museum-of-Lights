@@ -3,10 +3,6 @@ using UnityEngine.SceneManagement;
 
 public class PlayerScene : MonoBehaviour
 {
-    [Header("Internal Checkpoints")]
-    [SerializeField]
-    private bool m_solvedMuseum = false;
-
     private static PlayerScene m_instance;
 
     private void OnEnable() {
