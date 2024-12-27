@@ -16,7 +16,9 @@ public class ColorSpot : Spot
     private Color[] m_colors;
     [SerializeField]
     private int m_startingColor = 0;
-    public int m_currentColor { get; private set; }
+
+    // Hacked for game jam
+    public int m_currentColor;
 
     [SerializeField]
     private ColorPuzzle r_puzzle;

@@ -15,7 +15,7 @@ public class Spot : MonoBehaviour
     protected Vector3 m_input = Vector3.zero;
 
     // Hacked in for game jam
-    protected static PuzzleUI m_ui;
+    protected PuzzleUI m_ui;
 
     private void Awake() {
         if (m_ui == null) {

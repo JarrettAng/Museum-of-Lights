@@ -18,7 +18,7 @@ public class TutorialManager : MonoBehaviour
     private bool m_hasMoved = false, m_hasLooked = false, m_hasPaused = false;
 
     private void Start() {
-        if (!m_hasDoneTutorial) {
+        if (!m_hasDoneTutorial && m_moveTutorial) {
             StartCoroutine(ControlsTutorial());
         }
     }
