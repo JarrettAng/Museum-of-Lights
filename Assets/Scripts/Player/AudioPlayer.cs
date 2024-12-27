@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class FootstepAudio : MonoBehaviour
+public class AudioPlayer : MonoBehaviour
 {
     public Transform playerTransform;
     public Terrain t;
@@ -10,14 +10,18 @@ public class FootstepAudio : MonoBehaviour
     public float[] textureValues;
 
     [Header("Volume")]
-    public float SnowFootstepVol = 0.4f; 
-    public float GravelFootstepVol = 4.0f; 
-    public float DirtFootstepVol = 0.7f; 
-    public float WoodFootstepVol = 1.0f;
-    public float PresentFootstepVol = 2.0f;
+    [SerializeField]
+    public float SnowFootstepVol; // 0.4f
+    [SerializeField]
+    public float GravelFootstepVol; // 4.0f
+    [SerializeField]
+    public float DirtFootstepVol; // 0.7f
+    [SerializeField]
+    public float WoodFootstepVol; // 1.0f
+    [SerializeField]
+    public float PresentFootstepVol; // 2.0f
 
     [Header ("Footsteps")]
-    public AudioSource source;
     public List<AudioClip> dirtFS;
     public List<AudioClip> gravelFS;
     public List<AudioClip> snowFS;
@@ -26,6 +30,13 @@ public class FootstepAudio : MonoBehaviour
     public List<AudioClip> woodFS;
     public List<AudioClip> presentFS;
 
+    [Header("SFX")]
+    public AudioClip solvingPuzzle;
+    public AudioClip solvedPuzzle;
+    public AudioClip rotatingPuzzle;
+    public AudioClip clickSound;
+
+    public List<AudioSource> source;
     AudioClip previousClip;
 
     enum FSSurface
@@ -33,6 +44,12 @@ public class FootstepAudio : MonoBehaviour
         Empty, // Terrain
         Wood,
         Present
+    }
+
+    enum AudioPlayers
+    {
+        SFX,
+        Footsteps,
     }
 
     // Checks the surface where the player is standing on
@@ -60,6 +77,7 @@ public class FootstepAudio : MonoBehaviour
         t = Terrain.activeTerrain;
         playerTransform = transform;
         textureValues = new float[5];
+        Debug.Log(source.Count);
     }
     public void GetTerrainTexture()
     {
@@ -100,23 +118,23 @@ public class FootstepAudio : MonoBehaviour
     // Depending on the surface, it will play the appropriate sound
     public void PlayFootstep()
     {
-        if (source.isPlaying)
+        if (source[(int)AudioPlayers.Footsteps].isPlaying)
             return;
 
         FSSurface surface = CheckSurface();
-        source.pitch = Random.Range(0.8f, 1.2f);
+        source[(int)AudioPlayers.Footsteps].pitch = Random.Range(0.8f, 1.2f);
 
         switch(surface)
         {
             case FSSurface.Wood:
-                source.PlayOneShot(GetClip(woodFS), WoodFootstepVol);
+                source[(int)AudioPlayers.Footsteps].PlayOneShot(GetClip(woodFS), WoodFootstepVol);
                 break;
             case FSSurface.Present:
-                source.PlayOneShot(GetClip(presentFS), PresentFootstepVol);
+                source[(int)AudioPlayers.Footsteps].PlayOneShot(GetClip(presentFS), PresentFootstepVol);
                 break;
             // Terrain 
             case FSSurface.Empty:
-                source.clip = null;
+                source[(int)AudioPlayers.Footsteps].clip = null;
 
                 // If a certain texture has a value, it means that it is being stepped on
                 // and the sound will be scaled based on the amount that is present, allowing
@@ -124,15 +142,15 @@ public class FootstepAudio : MonoBehaviour
                 GetTerrainTexture();
                 if (textureValues[0] > 0)
                 {
-                    source.PlayOneShot(GetClip(dirtFS), textureValues[0] * DirtFootstepVol);
+                    source[(int)AudioPlayers.Footsteps].PlayOneShot(GetClip(dirtFS), textureValues[0] * DirtFootstepVol);
                 }
                 if (textureValues[1] > 0)
                 {
-                    source.PlayOneShot(GetClip(gravelFS), textureValues[1] * GravelFootstepVol);
+                    source[(int)AudioPlayers.Footsteps].PlayOneShot(GetClip(gravelFS), textureValues[1] * GravelFootstepVol);
                 }
                 if (textureValues[2] > 0)
                 {
-                    source.PlayOneShot(GetClip(snowFS), textureValues[2] * SnowFootstepVol);
+                    source[(int)AudioPlayers.Footsteps].PlayOneShot(GetClip(snowFS), textureValues[2] * SnowFootstepVol);
                 }
             break;
         }
@@ -154,4 +172,22 @@ public class FootstepAudio : MonoBehaviour
         previousClip = selectedClip;
         return selectedClip;
     }
+    void PlayRotation()
+    {
+        source[(int)AudioPlayers.SFX].PlayOneShot(rotatingPuzzle, 1.0f);
+    }
+    void PlaySolvingMode()
+    {
+        source[(int)AudioPlayers.SFX].PlayOneShot(solvingPuzzle, 1.0f);
+    }
+    void PlaySolved()
+    {
+        source[(int)AudioPlayers.SFX].PlayOneShot(solvedPuzzle, 1.0f);
+    }
+    void PlayLockedIn()
+    {
+        source[(int)AudioPlayers.SFX].PlayOneShot(solvedPuzzle, 1.0f);
+    }
+
+
 }

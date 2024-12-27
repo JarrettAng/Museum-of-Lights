@@ -14,9 +14,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private float m_gravity = 9.81f;
 
-    [SerializeField]
-    FootstepAudio m_footstepAudio;
-
     public bool m_Enabled { get; set; }
 
     private void Awake() {
