@@ -22097,7 +22097,7 @@ MonoBehaviour:
   OnSolve:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1300563407}
+      - m_Target: {fileID: 1544152646}
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
         m_Mode: 5
@@ -41528,11 +41528,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7808969354428454418, guid: c819f8ba764722e4490a3bb89fd6d737, type: 3}
   m_PrefabInstance: {fileID: 1300563405}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &1300563407 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 2850803178767685189, guid: c819f8ba764722e4490a3bb89fd6d737, type: 3}
-  m_PrefabInstance: {fileID: 1300563405}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1305337305
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -48632,6 +48627,11 @@ PrefabInstance:
 --- !u!4 &1544152645 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7808969354428454418, guid: c819f8ba764722e4490a3bb89fd6d737, type: 3}
+  m_PrefabInstance: {fileID: 1544152644}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1544152646 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2850803178767685189, guid: c819f8ba764722e4490a3bb89fd6d737, type: 3}
   m_PrefabInstance: {fileID: 1544152644}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1548098675
