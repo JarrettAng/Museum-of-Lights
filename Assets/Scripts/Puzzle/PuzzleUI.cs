@@ -13,14 +13,16 @@ public class PuzzleUI : MonoBehaviour
         m_puzzleUI.SetActive(false);
     }
 
-    private void Update() {
-        if (Input.GetKeyDown(KeyCode.Tab)) {
-            m_puzzleUI.SetActive(!m_puzzleUI.activeSelf);
-        }
+    public void EnterPuzzleUI() {
+        m_puzzleUI.SetActive(true);
+    }
+
+    public void ExitPuzzleUI() {
+        m_puzzleUI.SetActive(false);
     }
 
     public void SetLockInProgress(float progress) {
-        if (progress < 0.1f) {
+        if (progress < 0.1f || progress >= 1.0f) {
             m_progressCircle.gameObject.SetActive(false);
             return;
         }

@@ -16,7 +16,9 @@ public class ColorSpot : Spot
     private Color[] m_colors;
     [SerializeField]
     private int m_startingColor = 0;
-    public int m_currentColor { get; private set; }
+
+    // Hacked for game jam
+    public int m_currentColor;
 
     [SerializeField]
     private ColorPuzzle r_puzzle;
@@ -74,11 +76,13 @@ public class ColorSpot : Spot
     public override void EnterPuzzle() {
         r_puzzle.enabled = true;
         m_currentlyActive = true;
+        m_ui.EnterPuzzleUI();
     }
 
     public override void ExitPuzzle() {
         r_puzzle.enabled = false;
         m_currentlyActive = false;
+        m_ui.ExitPuzzleUI();
     }
 
     public void ChangeSkyColor() {
