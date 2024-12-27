@@ -46,8 +46,8 @@ public class LightSpot : Spot
             // Keyboard rotation
             if (m_vertical) {
                 if (m_intertedY) {
-                    if (Input.GetKey(KeyCode.W)) m_input.z -= 1f; // W S: Rotate around X axis
-                    if (Input.GetKey(KeyCode.S)) m_input.z += 1f;
+                    if (Input.GetKey(KeyCode.W)) m_input.x -= 1f; // W S: Rotate around X axis
+                    if (Input.GetKey(KeyCode.S)) m_input.x += 1f;
                 }
                 else {
                     if (Input.GetKey(KeyCode.W)) m_input.x += 1f; // W S: Rotate around X axis
@@ -76,10 +76,10 @@ public class LightSpot : Spot
             if (m_input.sqrMagnitude < 0.1f) {
                 if (m_lockInTimer < m_lockInTime) {
                     m_lockInTimer += Time.deltaTime;
-                    r_puzzle.m_LockedIn = false;
                 }
             }
             else {
+                r_puzzle.m_LockedIn = false;
                 m_lockInTimer = 0.0f;
             }
 

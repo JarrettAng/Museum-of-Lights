@@ -17,6 +17,10 @@ public class LevelManager : MonoBehaviour
         StartCoroutine(LoadFinalScene());
     }
 
+    public void CloseGame() {
+        Application.Quit();
+    }
+
     private IEnumerator LoadScene(string sceneName) {
         yield return new WaitForSeconds(0.1f);
         SceneManager.LoadScene(sceneName);
@@ -27,11 +31,12 @@ public class LevelManager : MonoBehaviour
 
         float step = camera.farClipPlane / 5f;
         // Reduce far view until it's near
-        while (camera.farClipPlane > 0.1f) {
+        while (camera.farClipPlane > 1.0f) {
             camera.farClipPlane -= step * Time.deltaTime;
             yield return new WaitForEndOfFrame();
         }
 
         SceneManager.LoadScene("GameEnd");
+        camera.farClipPlane = 1000.0f;
     }
 }

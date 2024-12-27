@@ -13,7 +13,7 @@ public class FinalPuzzle : MonoBehaviour
     public void UpdateLightPuzzle() {
         LightPuzzle.OnSolve = RightGateOnSolve;
         LightPuzzle.OnUnsolve = RightGateOnUnsolve;
-        LightPuzzle.m_correctRot = RightGateCorrectRot;
+        LightPuzzle.r_correctRotation = RightGateCorrectRot;
     }
 
     public UnityEvent FinalOnSolve;
@@ -21,8 +21,9 @@ public class FinalPuzzle : MonoBehaviour
     public Transform FinalGateCorrectRot;
 
     public void UpdateLightPuzzleFinal() {
+        LightPuzzle.m_tolerance = 125f;
         LightPuzzle.OnSolve = FinalOnSolve;
         LightPuzzle.OnUnsolve = FinalGateOnUnsolve;
-        LightPuzzle.m_correctRot = FinalGateCorrectRot;
+        LightPuzzle.r_correctRotation = FinalGateCorrectRot;
     }
 }

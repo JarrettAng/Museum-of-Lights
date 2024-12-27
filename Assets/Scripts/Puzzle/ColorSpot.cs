@@ -53,10 +53,10 @@ public class ColorSpot : Spot
             if (m_input.sqrMagnitude < 0.1f) {
                 if (m_lockInTimer < m_lockInTime) {
                     m_lockInTimer += Time.deltaTime;
-                    r_puzzle.m_LockedIn = false;
                 }
             }
             else {
+                r_puzzle.m_LockedIn = false;
                 m_lockInTimer = 0.0f;
             }
 
