@@ -64,21 +64,29 @@ PrefabInstance:
       propertyPath: m_Name
       value: nutcracker
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 05b65ad2cc99c09479e8d69c33c59004, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 05b65ad2cc99c09479e8d69c33c59004, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 05b65ad2cc99c09479e8d69c33c59004, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 658666465536346845}
+      addedObject: {fileID: 1353888359216207931}
   m_SourcePrefab: {fileID: 100100000, guid: 05b65ad2cc99c09479e8d69c33c59004, type: 3}
 --- !u!1 &4417500473510619553 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 05b65ad2cc99c09479e8d69c33c59004, type: 3}
   m_PrefabInstance: {fileID: 3571201223341462768}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &658666465536346845
-BoxCollider:
+--- !u!136 &1353888359216207931
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -95,6 +103,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.548431, y: 1.0780884, z: 0.34746185}
-  m_Center: {x: 0.0000009536743, y: 0.5390442, z: 0.013730928}
+  serializedVersion: 2
+  m_Radius: 0.2
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.5390442, z: 0.013730928}
