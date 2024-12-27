@@ -74,11 +74,13 @@ public class ColorSpot : Spot
     public override void EnterPuzzle() {
         r_puzzle.enabled = true;
         m_currentlyActive = true;
+        m_ui.EnterPuzzleUI();
     }
 
     public override void ExitPuzzle() {
         r_puzzle.enabled = false;
         m_currentlyActive = false;
+        m_ui.ExitPuzzleUI();
     }
 
     public void ChangeSkyColor() {
