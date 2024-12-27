@@ -32,4 +32,8 @@ public class Puzzle : MonoBehaviour
     protected virtual bool CheckSolved() {
         return m_solved;
     }
+
+    public void PlayCorrectJingle() {
+        FindFirstObjectByType<AudioPlayer>().PlaySolved();
+    }
 }
