@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Puzzle
   - SpawnPoint
+  - Wood
+  - Present
   layers:
   - Default
   - TransparentFX
