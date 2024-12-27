@@ -11572,6 +11572,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 410087043}
+        m_TargetAssemblyTypeName: Puzzle, Assembly-CSharp
+        m_MethodName: PlayCorrectJingle
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_puzzlesSolved: 00
   m_solvedOnce: 1
   m_allSolved: 0
@@ -56539,7 +56551,7 @@ PrefabInstance:
       objectReference: {fileID: 1269663156}
     - target: {fileID: 137847608753374819, guid: f72e4a827b6ab33428db574f2a4c7d24, type: 3}
       propertyPath: m_lockInTime
-      value: 1
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 137847608753374819, guid: f72e4a827b6ab33428db574f2a4c7d24, type: 3}
       propertyPath: m_colors.Array.size
@@ -69259,6 +69271,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Solved
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1515622008}
+        m_TargetAssemblyTypeName: Puzzle, Assembly-CSharp
+        m_MethodName: PlayCorrectJingle
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -85401,6 +85425,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2102088165}
     - target: {fileID: 137847608753374819, guid: f72e4a827b6ab33428db574f2a4c7d24, type: 3}
+      propertyPath: m_lockInTime
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 137847608753374819, guid: f72e4a827b6ab33428db574f2a4c7d24, type: 3}
       propertyPath: m_colors.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -92339,6 +92367,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
         m_MethodName: SetTrigger
         m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Solved
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2018223081}
+        m_TargetAssemblyTypeName: Puzzle, Assembly-CSharp
+        m_MethodName: PlayCorrectJingle
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

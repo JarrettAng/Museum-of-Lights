@@ -85,6 +85,12 @@ public class LookSpot : Spot
         r_puzzle.enabled = true;
         m_currentlyActive = true;
         m_ui.EnterPuzzleUI();
+
+        // If no input allowed, reset lock in timer
+        if (!m_horizontal && !m_vertical) {
+            m_lockInTimer = 0.0f;
+            r_puzzle.m_LockedIn = false;
+        }
     }
 
     public override void ExitPuzzle() {

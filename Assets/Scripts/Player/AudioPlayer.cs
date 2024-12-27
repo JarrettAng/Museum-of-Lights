@@ -170,11 +170,11 @@ public class AudioPlayer : MonoBehaviour
         previousClip = selectedClip;
         return selectedClip;
     }
-    void PlaySolved()
+    public void PlaySolved()
     {
         source[(int)AudioPlayers.SFX].PlayOneShot(solvedPuzzle, 1.0f);
     }
-    void PlayLockedIn()
+    public void PlayLockedIn()
     {
         source[(int)AudioPlayers.SFX].PlayOneShot(lockedIn, 1.0f);
     }
