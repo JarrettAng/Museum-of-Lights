@@ -53,11 +53,13 @@ public class ColorSpot : Spot
             if (m_input.sqrMagnitude < 0.1f) {
                 if (m_lockInTimer < m_lockInTime) {
                     m_lockInTimer += Time.deltaTime;
+                    m_ui.SetLockInProgress(m_lockInTimer / m_lockInTime);
                 }
             }
             else {
                 r_puzzle.m_LockedIn = false;
                 m_lockInTimer = 0.0f;
+                m_ui.SetLockInProgress(0.0f);
             }
 
             // If locked in, check if the player has solved the puzzle
