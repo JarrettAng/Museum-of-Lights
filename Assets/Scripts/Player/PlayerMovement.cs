@@ -53,8 +53,6 @@ public class PlayerMovement : MonoBehaviour
 
             dir += Vector3.down * m_gravity * Time.deltaTime;
             m_cc.Move(dir);
-
-            m_footstepAudio.PlayFootstep();
         }
         else {
             m_animator.SetBool("Moving", false);

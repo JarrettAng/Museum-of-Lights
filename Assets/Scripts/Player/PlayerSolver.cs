@@ -19,7 +19,7 @@ public class PlayerSolver : MonoBehaviour
     private Quaternion m_targetRotation;
 
     private void Update() {
-        if (Input.GetKeyDown(KeyCode.Tab) && r_currentLookSpot) {
+        if (Input.GetKeyDown(KeyCode.E) && r_currentLookSpot) {
             r_pMovement.m_Enabled = m_puzzleMode;
             r_pCamera.m_Enabled = m_puzzleMode;
 
