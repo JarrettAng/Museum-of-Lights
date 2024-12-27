@@ -1,13 +1,20 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
     public void LoadOutdoors() {
-        SceneManager.LoadScene("Main");
+        // Load scene next frame
+        StartCoroutine(LoadScene("Main"));
     }
 
     public void LoadIndoors() {
-        SceneManager.LoadScene("Indoors");
+        StartCoroutine(LoadScene("Indoors"));
+    }
+
+    private IEnumerator LoadScene(string sceneName) {
+        yield return new WaitForSeconds(0.1f);
+        SceneManager.LoadScene(sceneName);
     }
 }

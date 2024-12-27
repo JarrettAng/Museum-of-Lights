@@ -50,16 +50,11 @@ public class PlayerMovement : MonoBehaviour
 
             dir += Vector3.down * m_gravity * Time.deltaTime;
             m_cc.Move(dir);
-
-            //m_rb.AddForce(transform.forward * direction.y, ForceMode.VelocityChange);
-            //m_rb.AddForce(transform.right * direction.x, ForceMode.VelocityChange);
         }
         else {
             m_animator.SetBool("Moving", false);
-
-            // Stop the player moving horizontally
-            //m_rb.linearVelocity = new Vector3(0.0f, m_rb.linearVelocity.y, 0.0f);
-            m_cc.Move(Vector3.zero);
+            Vector3 gravity = Vector3.down * m_gravity * Time.deltaTime;
+            m_cc.Move(gravity);
         }
     }
 
