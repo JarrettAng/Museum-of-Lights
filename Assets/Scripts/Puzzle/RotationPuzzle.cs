@@ -8,7 +8,9 @@ public class RotationPuzzle : Puzzle
     private float m_tolerance = 5f;
 
     public float m_RotationSpeed = 80.0f;
-    private bool m_correctRot = false;
+
+    // Hacked for game jam
+    public bool m_correctRot = false;
 
     new void Update() {
         base.Update();

@@ -57494,6 +57494,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 810652068}
     - target: {fileID: 137847608753374819, guid: f72e4a827b6ab33428db574f2a4c7d24, type: 3}
+      propertyPath: m_lockInTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 137847608753374819, guid: f72e4a827b6ab33428db574f2a4c7d24, type: 3}
       propertyPath: m_colors.Array.size
       value: 3
       objectReference: {fileID: 0}
