@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 public class FinalPuzzle : MonoBehaviour
 {
-    // This is a hack class
+    // This is a hacked in class for the game jam
 
     public UnityEvent RightGateOnSolve;
     public UnityEvent RightGateOnUnsolve;
@@ -18,12 +18,13 @@ public class FinalPuzzle : MonoBehaviour
 
     public UnityEvent FinalOnSolve;
     public UnityEvent FinalGateOnUnsolve;
-    public Transform FinalGateCorrectRot;
+    public Transform[] FinalGateCorrectRot;
 
     public void UpdateLightPuzzleFinal() {
-        LightPuzzle.m_tolerance = 125f;
+        LightPuzzle.m_tolerance = 60f;
         LightPuzzle.OnSolve = FinalOnSolve;
         LightPuzzle.OnUnsolve = FinalGateOnUnsolve;
-        LightPuzzle.r_correctRotation = FinalGateCorrectRot;
+        LightPuzzle.r_correctRotations = FinalGateCorrectRot;
+        LightPuzzle.m_multipleCorrectRotations = true;
     }
 }

@@ -6,8 +6,8 @@ public class RotationPuzzle : Puzzle
     // Hacked for game jam
     public Transform r_correctRotation;
     public Transform[] r_correctRotations;
-    [SerializeField]
-    private bool m_multipleCorrectRotations = false;
+    public bool m_multipleCorrectRotations = false;
+
     [SerializeField]
     // Hacked for game jam
     public float m_tolerance = 5f;
@@ -30,6 +30,7 @@ public class RotationPuzzle : Puzzle
                         m_correctRot = true;
                         break;
                     }
+                
                 }
             }
             else {

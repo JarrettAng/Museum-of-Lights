@@ -31,12 +31,12 @@ public class LevelManager : MonoBehaviour
 
         float step = camera.farClipPlane / 5f;
         // Reduce far view until it's near
-        while (camera.nearClipPlane < camera.farClipPlane) {
+        while (camera.farClipPlane > camera.nearClipPlane) {
             camera.nearClipPlane += step * Time.deltaTime;
             yield return new WaitForEndOfFrame();
         }
 
         SceneManager.LoadScene("GameEnd");
-        camera.nearClipPlane = 1000.0f;
+        camera.nearClipPlane = 0.3f;
     }
 }
