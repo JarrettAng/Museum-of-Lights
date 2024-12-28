@@ -210,6 +210,4 @@ public class AudioPlayer : MonoBehaviour {
     {
         source[(int)AudioPlayers.SFX].PlayOneShot(lockedIn, 1.0f);
     }
-
-
 }
