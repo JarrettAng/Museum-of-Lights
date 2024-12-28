@@ -1142,9 +1142,9 @@ MonoBehaviour:
   textureValues: []
   SnowFootstepVol: 0.6
   GravelFootstepVol: 2.5
-  DirtFootstepVol: 0.8
-  WoodFootstepVol: 3
-  PresentFootstepVol: 2
+  DirtFootstepVol: 0.65
+  WoodFootstepVol: 3.2
+  PresentFootstepVol: 4
   dirtFS:
   - {fileID: 8300000, guid: e13985aac5f738749a0b0dda119200de, type: 3}
   - {fileID: 8300000, guid: 0aeaaf0a527da2b49b5e943d37541ac9, type: 3}
@@ -1173,9 +1173,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 0c390f9627c4dc642a787fa510fdc270, type: 3}
   - {fileID: 8300000, guid: 5912446557bb7394786627002d571803, type: 3}
   - {fileID: 8300000, guid: 686682574ca6a754ab96c15716995312, type: 3}
-  - {fileID: 8300000, guid: 41dead16482057d439fe4e50820185c1, type: 3}
-  - {fileID: 8300000, guid: 4474e087eb6fb864cbe6b2ae98ec85d9, type: 3}
-  - {fileID: 8300000, guid: 5912446557bb7394786627002d571803, type: 3}
+  - {fileID: 8300000, guid: 0c390f9627c4dc642a787fa510fdc270, type: 3}
+  - {fileID: 8300000, guid: 937429f6a23883644b836e86c6458db1, type: 3}
   presentFS:
   - {fileID: 8300000, guid: 006e9f37239969f418769f87de0e7d00, type: 3}
   - {fileID: 8300000, guid: b723c47eb0cf2404987625e30c00f20a, type: 3}

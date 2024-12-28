@@ -18,14 +18,38 @@ public class AudioManager : MonoBehaviour
         masterMixer.SetFloat("MasterParam", Mathf.Log10(_volume) * 20);
     }
 
+    public float GetMasterLevel() {
+        float volume;
+        masterMixer.GetFloat("MasterParam", out volume);
+        volume = Mathf.Pow(10, volume / 20);
+
+        return volume;
+    }
+
     public void SetSFXLevel(float _volume)
     {
         masterMixer.SetFloat("SFXParam", Mathf.Log10(_volume) * 20);
     }
 
+    public float GetSFXLevel() {
+        float volume;
+        masterMixer.GetFloat("SFXParam", out volume);
+        volume = Mathf.Pow(10, volume / 20);
+
+        return volume;
+    }
+
     public void SetMusicLevel(float _volume)
     {
         masterMixer.SetFloat("MusicParam", Mathf.Log10(_volume) * 20);
+    }
+
+    public float GetMusicLevel() {
+        float volume;
+        masterMixer.GetFloat("MusicParam", out volume);
+        volume = Mathf.Pow(10, volume / 20);
+
+        return volume;
     }
 
     // UI sounds

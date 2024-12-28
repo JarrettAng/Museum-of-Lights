@@ -10,22 +10,27 @@ public class PauseMenuManager : MonoBehaviour
     private AudioManager audioManager;
     private PlayerCamera playerCamera;
 
+    [SerializeField]
     private AudioSource ambienceAudioSource;
+    [SerializeField]
     private AudioSource bgmAudioSource;
 
     private bool gamePaused = false;
 
-    private void Start()
-    {
-        audioManager = FindFirstObjectByType<AudioManager>();
-        playerCamera = FindFirstObjectByType<PlayerCamera>();
-        ambienceAudioSource = audioManager.AmbienceSource;
-        bgmAudioSource = audioManager.BGMSource;
-
-    }
     private void Update()
     {
         // Hack into game jam
+        if (!ambienceAudioSource) {
+            audioManager = FindFirstObjectByType<AudioManager>();
+            ambienceAudioSource = audioManager.AmbienceSource;
+        }
+        if (!bgmAudioSource) {
+            audioManager = FindFirstObjectByType<AudioManager>();
+            bgmAudioSource = audioManager.BGMSource;
+        }
+        if (!playerCamera) {
+            playerCamera = FindFirstObjectByType<PlayerCamera>();
+        }
         if (mainMenuPanel.activeSelf) return;
 
         if (Input.GetKeyDown(KeyCode.Escape))

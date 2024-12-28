@@ -183,11 +183,11 @@ public class AudioPlayer : MonoBehaviour
 
     public void PlaySolved()
     {
-        source[(int)AudioPlayers.SFX].PlayOneShot(solvedPuzzle, 1.5f);
+        source[(int)AudioPlayers.SFX].PlayOneShot(solvedPuzzle, 1.0f);
     }
     public void PlayLockedIn()
     {
-        source[(int)AudioPlayers.SFX].PlayOneShot(lockedIn, 0.5f);
+        source[(int)AudioPlayers.SFX].PlayOneShot(lockedIn, 1.0f);
     }
 
 

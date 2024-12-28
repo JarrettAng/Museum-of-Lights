@@ -26676,6 +26676,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1adc71d1b31283d4db548150c21c63da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_masterVolumeSlider: {fileID: 1652810464}
+  m_musicVolumeSlider: {fileID: 1405920008}
+  m_sfxVolumeSlider: {fileID: 21345978}
 --- !u!114 &656986323
 MonoBehaviour:
   m_ObjectHideFlags: 0
