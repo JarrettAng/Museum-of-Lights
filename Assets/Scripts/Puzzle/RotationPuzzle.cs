@@ -5,6 +5,9 @@ public class RotationPuzzle : Puzzle
     [SerializeField]
     // Hacked for game jam
     public Transform r_correctRotation;
+    public Transform[] r_correctRotations;
+    [SerializeField]
+    private bool m_multipleCorrectRotations = false;
     [SerializeField]
     // Hacked for game jam
     public float m_tolerance = 5f;
@@ -19,11 +22,23 @@ public class RotationPuzzle : Puzzle
         if (m_solvedOnce && m_correctRot) return;
 
         if (m_LockedIn) {
-            if (Quaternion.Angle(transform.rotation, r_correctRotation.rotation) < m_tolerance) {
-                m_correctRot = true;
+            if (m_multipleCorrectRotations) {
+                m_correctRot = false;
+                // If any are correct, then it's correct
+                foreach (Transform t in r_correctRotations) {
+                    if (Quaternion.Angle(transform.rotation, t.rotation) < m_tolerance) {
+                        m_correctRot = true;
+                        break;
+                    }
+                }
             }
             else {
-                m_correctRot = false;
+                if (Quaternion.Angle(transform.rotation, r_correctRotation.rotation) < m_tolerance) {
+                    m_correctRot = true;
+                }
+                else {
+                    m_correctRot = false;
+                }
             }
         }
     }
