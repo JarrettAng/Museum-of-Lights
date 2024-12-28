@@ -100,7 +100,9 @@ public class LightSpot : Spot
 
     public override void ExitPuzzle() {
         // Lock in on exit
-        r_puzzle.m_LockedIn = true;
+        if (m_solveableFromThisSpot) {
+            r_puzzle.m_LockedIn = true;
+        }
         Invoke("DisablePuzzle", 0.1f);
 
         m_currentlyActive = false;
