@@ -5,12 +5,22 @@ public class PlayerScene : MonoBehaviour
 {
     private static PlayerScene m_instance;
 
+    // Hacked for game jam
+    private static bool m_firstTime = true;
+
     private void OnEnable() {
         if (m_instance == null) {
             m_instance = this;
         }
         else {
             Destroy(gameObject);
+        }
+    }
+
+    private void Start() {
+        if (m_firstTime) {
+            GameObject.FindGameObjectWithTag("MainMenu").SetActive(true);
+            m_firstTime = false;
         }
     }
 

@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class AudioPlayer : MonoBehaviour
-{
+using UnityEngine.SceneManagement;
+public class AudioPlayer : MonoBehaviour {
     public Transform playerTransform;
     public Terrain t;
     public int posX;
@@ -21,7 +21,7 @@ public class AudioPlayer : MonoBehaviour
     [SerializeField]
     public float PresentFootstepVol; // 2.0f
 
-    [Header ("Footsteps")]
+    [Header("Footsteps")]
     public List<AudioClip> dirtFS;
     public List<AudioClip> gravelFS;
     public List<AudioClip> snowFS;
@@ -42,27 +42,23 @@ public class AudioPlayer : MonoBehaviour
     int currentFootstepSource = 0;
     int previousFootstepIndex = 0;
 
-    enum FSSurface
-    {
+    enum FSSurface {
         Empty, // Terrain
         Wood,
         Present
     }
 
-    enum AudioPlayers
-    {
+    enum AudioPlayers {
         SFX,
         Footsteps,
     }
 
     // Checks the surface where the player is standing on
-    private FSSurface CheckSurface()
-    {
+    private FSSurface CheckSurface() {
         RaycastHit hit;
         Ray ray = new Ray(playerTransform.position + Vector3.up * 0.5f, -Vector3.up);
 
-        if (Physics.Raycast(ray, out hit, 1.0f, Physics.AllLayers, QueryTriggerInteraction.Ignore))
-        {
+        if (Physics.Raycast(ray, out hit, 1.0f, Physics.AllLayers, QueryTriggerInteraction.Ignore)) {
             if (hit.collider == null)
                 return FSSurface.Empty;
 
@@ -75,11 +71,18 @@ public class AudioPlayer : MonoBehaviour
         return FSSurface.Empty;
     }
 
-    void Start()
-    {
-        t = Terrain.activeTerrain;
+    void Start() {
+        SceneManager.sceneLoaded += UpdateTerrainReference;
         playerTransform = transform;
         textureValues = new float[5];
+    }
+
+    public void UpdateTerrainReference(Scene scene, LoadSceneMode mode) {
+        // Check if there is a terrain in the scene
+        if (Terrain.activeTerrain == null)
+            return;
+
+        t = Terrain.activeTerrain;
     }
     public void GetTerrainTexture()
     {
