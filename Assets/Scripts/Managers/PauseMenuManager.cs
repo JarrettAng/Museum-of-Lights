@@ -7,8 +7,7 @@ public class PauseMenuManager : MonoBehaviour
     public GameObject pauseMenuPanel;
     public GameObject creditsPanel;
 
-    public GameObject ambienceObject;
-    public GameObject bgmObject;
+    private AudioManager audioManager;
 
     private AudioSource ambienceAudioSource;
     private AudioSource bgmAudioSource;
@@ -17,17 +16,16 @@ public class PauseMenuManager : MonoBehaviour
 
     private void Start()
     {
-        if (ambienceObject != null)
-        {
-            ambienceAudioSource = ambienceObject.GetComponent<AudioSource>();
-        }
-        if (bgmObject != null)
-        {
-            bgmAudioSource = bgmObject.GetComponent<AudioSource>();
-        }
+        audioManager = FindFirstObjectByType<AudioManager>();
+        ambienceAudioSource = audioManager.AmbienceSource;
+        bgmAudioSource = audioManager.BGMSource;
+
     }
     private void Update()
     {
+        // Hack into game jam
+        if (mainMenuPanel.activeSelf) return;
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (gamePaused && pauseMenuPanel.activeSelf)
@@ -35,7 +33,7 @@ public class PauseMenuManager : MonoBehaviour
                 Time.timeScale = 1;
                 pauseMenuPanel.SetActive(false);
                 ambienceAudioSource.Play();
-                bgmAudioSource.Play();
+                //bgmAudioSource.Play();
             }
             else if (gamePaused && settingsMenuPanel.activeSelf)
             {
@@ -62,7 +60,7 @@ public class PauseMenuManager : MonoBehaviour
                 Time.timeScale = 0;
                 pauseMenuPanel.SetActive(true);
                 ambienceAudioSource.Pause();
-                bgmAudioSource.Pause();
+                //bgmAudioSource.Pause();
             }
 
             gamePaused = !gamePaused;
@@ -155,10 +153,21 @@ public class PauseMenuManager : MonoBehaviour
         pauseMenuPanel.SetActive(false);
         gamePaused = false;
         ambienceAudioSource.Play();
-        bgmAudioSource.Play();
+        //bgmAudioSource.Play();
     }
+
     public void OpenURL(string url)
     {
         Application.OpenURL(url);
+    }
+
+    public void PlayUISound() 
+    {
+        audioManager.PlayButtonClick();
+    }
+
+    public void PlayerSliderSound() 
+    {
+        audioManager.PlaySliderMove();
     }
 }
