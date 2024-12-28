@@ -6,6 +6,7 @@ public class PauseMenuManager : MonoBehaviour
     public GameObject settingsMenuPanel;
     public GameObject pauseMenuPanel;
     public GameObject creditsPanel;
+    public GameObject creditsPanel2;
 
     private AudioManager audioManager;
     private PlayerCamera playerCamera;
@@ -56,11 +57,19 @@ public class PauseMenuManager : MonoBehaviour
             }
             else if (gamePaused && creditsPanel.activeSelf)
             {
-                BackToMainMenuFromCredits();
+                BackToPauseMenuFromCredits();
             }
             else if (!gamePaused && creditsPanel.activeSelf)
             {
-                BackToPauseMenuFromCredits();
+                BackToMainMenuFromCredits();
+            }
+            else if (gamePaused && creditsPanel2.activeSelf)
+            {
+                BackToPauseMenuFromCredits2();
+            }
+            else if (!gamePaused && creditsPanel2.activeSelf)
+            {
+                BackToMainMenuFromCredits2();
             }
             else if (!gamePaused && mainMenuPanel.activeSelf)
             {
@@ -116,6 +125,19 @@ public class PauseMenuManager : MonoBehaviour
         }
     }
 
+    public void BackToPreviousMenuFromCredits2()
+    {
+        if (gamePaused)
+        {
+            BackToPauseMenuFromCredits2();
+        }
+        else
+        {
+            BackToMainMenuFromCredits2();
+        }
+    }
+
+
 
     private void BackToMainMenuFromSettings()
     {
@@ -150,6 +172,24 @@ public class PauseMenuManager : MonoBehaviour
     private void BackToMainMenuFromCredits()
     {
         SwitchPanel(creditsPanel, mainMenuPanel);
+    }
+    private void BackToMainMenuFromCredits2()
+    {
+        SwitchPanel(creditsPanel2, mainMenuPanel);
+    }
+    private void BackToPauseMenuFromCredits2()
+    {
+        SwitchPanel(creditsPanel2, pauseMenuPanel);
+    }
+
+    public void Credit1ToCredit2()
+    {
+        SwitchPanel(creditsPanel, creditsPanel2);
+    }
+
+    public void Credit2ToCredit1()
+    {
+        SwitchPanel(creditsPanel2, creditsPanel);
     }
 
     public void PauseMenuToQuit()
