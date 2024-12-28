@@ -42,8 +42,9 @@ public class PauseMenuManager : MonoBehaviour
                 ambienceAudioSource.Play();
                 //bgmAudioSource.Play();
 
-                // Enable camera input
+                // Enable camera input & disable cursor
                 playerCamera.enabled = true;
+                FindFirstObjectByType<LevelManager>().LockCursor();
             }
             else if (gamePaused && settingsMenuPanel.activeSelf)
             {
@@ -72,8 +73,9 @@ public class PauseMenuManager : MonoBehaviour
                 ambienceAudioSource.Pause();
                 //bgmAudioSource.Pause();
 
-                // Disable camera input
+                // Disable camera input & enable cursor
                 playerCamera.enabled = false;
+                FindFirstObjectByType<LevelManager>().UnlockCursor();
             }
 
             gamePaused = !gamePaused;
@@ -168,8 +170,9 @@ public class PauseMenuManager : MonoBehaviour
         ambienceAudioSource.Play();
         //bgmAudioSource.Play();
 
-        // Enable camera input
+        // Enable camera input & disable cursor
         playerCamera.enabled = true;
+        FindFirstObjectByType<LevelManager>().LockCursor();
     }
 
     public void OpenURL(string url)

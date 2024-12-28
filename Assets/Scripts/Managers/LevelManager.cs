@@ -4,6 +4,21 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
+    [SerializeField]
+    private bool m_lockCursorOnStart = false;
+    [SerializeField]
+    private bool m_unlockCursorOnStart = false;
+
+    // Hacked for game jam
+    private void Start() {
+        if (m_lockCursorOnStart) {
+            LockCursor();
+        }
+        if (m_unlockCursorOnStart) {
+            UnlockCursor();
+        }
+    }
+
     public void LoadOutdoors() {
         // Load scene next frame
         StartCoroutine(LoadScene("Main"));
@@ -56,5 +71,15 @@ public class LevelManager : MonoBehaviour
     public void StopOutsideAmbience() {
         AudioManager audioManager = FindFirstObjectByType<AudioManager>();
         audioManager.StopOutsideAmbience();
+    }
+
+    public void LockCursor() {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+
+    public void UnlockCursor() {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 }

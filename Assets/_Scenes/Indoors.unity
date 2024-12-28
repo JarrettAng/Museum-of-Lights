@@ -77270,6 +77270,10 @@ PrefabInstance:
       propertyPath: m_onTriggers.Array.data[1].m_PersistentCalls.m_Calls.Array.data[5].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 8819668649273628816, guid: 999a43cf1b009444d807e9cfd272d141, type: 3}
+      propertyPath: m_lockCursorOnStart
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
