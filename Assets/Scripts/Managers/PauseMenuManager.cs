@@ -8,6 +8,7 @@ public class PauseMenuManager : MonoBehaviour
     public GameObject creditsPanel;
 
     private AudioManager audioManager;
+    private PlayerCamera playerCamera;
 
     private AudioSource ambienceAudioSource;
     private AudioSource bgmAudioSource;
@@ -17,6 +18,7 @@ public class PauseMenuManager : MonoBehaviour
     private void Start()
     {
         audioManager = FindFirstObjectByType<AudioManager>();
+        playerCamera = FindFirstObjectByType<PlayerCamera>();
         ambienceAudioSource = audioManager.AmbienceSource;
         bgmAudioSource = audioManager.BGMSource;
 
@@ -34,6 +36,9 @@ public class PauseMenuManager : MonoBehaviour
                 pauseMenuPanel.SetActive(false);
                 ambienceAudioSource.Play();
                 //bgmAudioSource.Play();
+
+                // Enable camera input
+                playerCamera.enabled = true;
             }
             else if (gamePaused && settingsMenuPanel.activeSelf)
             {
@@ -61,6 +66,9 @@ public class PauseMenuManager : MonoBehaviour
                 pauseMenuPanel.SetActive(true);
                 ambienceAudioSource.Pause();
                 //bgmAudioSource.Pause();
+
+                // Disable camera input
+                playerCamera.enabled = false;
             }
 
             gamePaused = !gamePaused;
@@ -154,6 +162,9 @@ public class PauseMenuManager : MonoBehaviour
         gamePaused = false;
         ambienceAudioSource.Play();
         //bgmAudioSource.Play();
+
+        // Enable camera input
+        playerCamera.enabled = true;
     }
 
     public void OpenURL(string url)

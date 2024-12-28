@@ -37,6 +37,11 @@ public class AudioPlayer : MonoBehaviour
     public List<AudioSource> source;
     AudioClip previousClip;
 
+    // Multiple sources for footstep sounds so they can overlap
+    public List<AudioSource> footstepSources;
+    int currentFootstepSource = 0;
+    int previousFootstepIndex = 0;
+
     enum FSSurface
     {
         Empty, // Terrain
@@ -75,7 +80,6 @@ public class AudioPlayer : MonoBehaviour
         t = Terrain.activeTerrain;
         playerTransform = transform;
         textureValues = new float[5];
-        Debug.Log(source.Count);
     }
     public void GetTerrainTexture()
     {
@@ -125,14 +129,14 @@ public class AudioPlayer : MonoBehaviour
         switch(surface)
         {
             case FSSurface.Wood:
-                source[(int)AudioPlayers.Footsteps].PlayOneShot(GetClip(woodFS), WoodFootstepVol);
+                footstepSources[currentFootstepSource].PlayOneShot(GetNextClip(woodFS), WoodFootstepVol);
                 break;
             case FSSurface.Present:
-                source[(int)AudioPlayers.Footsteps].PlayOneShot(GetClip(presentFS), PresentFootstepVol);
+                footstepSources[currentFootstepSource].PlayOneShot(GetNextClip(presentFS), PresentFootstepVol);
                 break;
             // Terrain 
             case FSSurface.Empty:
-                source[(int)AudioPlayers.Footsteps].clip = null;
+                footstepSources[currentFootstepSource].clip = null;
 
                 // If a certain texture has a value, it means that it is being stepped on
                 // and the sound will be scaled based on the amount that is present, allowing
@@ -140,19 +144,20 @@ public class AudioPlayer : MonoBehaviour
                 GetTerrainTexture();
                 if (textureValues[0] > 0)
                 {
-                    source[(int)AudioPlayers.Footsteps].PlayOneShot(GetClip(dirtFS), textureValues[0] * DirtFootstepVol);
+                    footstepSources[currentFootstepSource].PlayOneShot(GetNextClip(dirtFS), textureValues[0] * DirtFootstepVol);
                 }
                 if (textureValues[1] > 0)
                 {
-                    source[(int)AudioPlayers.Footsteps].PlayOneShot(GetClip(gravelFS), textureValues[1] * GravelFootstepVol);
+                    footstepSources[currentFootstepSource].PlayOneShot(GetNextClip(gravelFS), textureValues[1] * GravelFootstepVol);
                 }
                 if (textureValues[2] > 0)
                 {
-                    source[(int)AudioPlayers.Footsteps].PlayOneShot(GetClip(snowFS), textureValues[2] * SnowFootstepVol);
+                    footstepSources[currentFootstepSource].PlayOneShot(GetNextClip(snowFS), textureValues[2] * SnowFootstepVol);
                 }
             break;
         }
 
+        currentFootstepSource = (currentFootstepSource + 1) % footstepSources.Count;
     }
     AudioClip GetClip(List<AudioClip> clipArray)
     {
@@ -170,13 +175,19 @@ public class AudioPlayer : MonoBehaviour
         previousClip = selectedClip;
         return selectedClip;
     }
+
+    AudioClip GetNextClip(List<AudioClip> clipArray) {
+        previousFootstepIndex = (previousFootstepIndex + 1) % clipArray.Count;
+        return clipArray[previousFootstepIndex];
+    }
+
     public void PlaySolved()
     {
-        source[(int)AudioPlayers.SFX].PlayOneShot(solvedPuzzle, 1.0f);
+        source[(int)AudioPlayers.SFX].PlayOneShot(solvedPuzzle, 1.5f);
     }
     public void PlayLockedIn()
     {
-        source[(int)AudioPlayers.SFX].PlayOneShot(lockedIn, 1.0f);
+        source[(int)AudioPlayers.SFX].PlayOneShot(lockedIn, 0.5f);
     }
 
 
