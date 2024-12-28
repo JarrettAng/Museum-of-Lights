@@ -80,12 +80,23 @@ public class ColorSpot : Spot
     }
 
     public override void ExitPuzzle() {
-        r_puzzle.enabled = false;
+        // Lock in on exit
+        r_puzzle.m_LockedIn = true;
+        Invoke("DisablePuzzle", 0.1f);
+
         m_currentlyActive = false;
         m_ui.ExitPuzzleUI();
     }
 
+    private void DisablePuzzle() {
+        if (m_currentlyActive) return;
+        r_puzzle.enabled = false;
+    }
+
     public void ChangeSkyColor() {
+        if (!m_skybox) {
+            m_skybox = Camera.main.GetComponent<Skybox>();
+        }
         m_skybox.material = m_skyboxMaterial[m_currentColor];
     }
 }

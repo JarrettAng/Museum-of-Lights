@@ -72,7 +72,10 @@ public class AudioPlayer : MonoBehaviour {
     }
 
     void Start() {
+        // Update terrain reference
         SceneManager.sceneLoaded += UpdateTerrainReference;
+        t = Terrain.activeTerrain;
+
         playerTransform = transform;
         textureValues = new float[5];
     }
@@ -86,6 +89,13 @@ public class AudioPlayer : MonoBehaviour {
     }
     public void GetTerrainTexture()
     {
+        // Hacked in for game jam
+        if (t == null) {
+            t = Terrain.activeTerrain;
+
+            if (t == null) return;
+        }
+
         ConvertPosition(playerTransform.position);
         CheckTexture();
     }
@@ -156,6 +166,14 @@ public class AudioPlayer : MonoBehaviour {
                 if (textureValues[2] > 0)
                 {
                     footstepSources[currentFootstepSource].PlayOneShot(GetNextClip(snowFS), textureValues[2] * SnowFootstepVol);
+                }
+                if (textureValues[3] > 0) 
+                {
+                    footstepSources[currentFootstepSource].PlayOneShot(GetNextClip(darkStoneFS), textureValues[3] * SnowFootstepVol);
+                }
+                if (textureValues[4] > 0) 
+                {
+                    footstepSources[currentFootstepSource].PlayOneShot(GetNextClip(cliffFS), textureValues[4] * SnowFootstepVol);
                 }
             break;
         }

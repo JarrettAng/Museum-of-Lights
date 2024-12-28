@@ -21,7 +21,7 @@ public class FinalPuzzle : MonoBehaviour
     public Transform[] FinalGateCorrectRot;
 
     public void UpdateLightPuzzleFinal() {
-        LightPuzzle.m_tolerance = 60f;
+        LightPuzzle.m_tolerance = 66f;
         LightPuzzle.OnSolve = FinalOnSolve;
         LightPuzzle.OnUnsolve = FinalGateOnUnsolve;
         LightPuzzle.r_correctRotations = FinalGateCorrectRot;

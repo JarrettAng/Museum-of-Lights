@@ -6,6 +6,8 @@ public class PlayerScene : MonoBehaviour
     private static PlayerScene m_instance;
 
     // Hacked for game jam
+    [SerializeField]
+    private GameObject m_mainMenuPanel;
     private static bool m_firstTime = true;
 
     private void OnEnable() {
@@ -19,7 +21,9 @@ public class PlayerScene : MonoBehaviour
 
     private void Start() {
         if (m_firstTime) {
-            GameObject.FindGameObjectWithTag("MainMenu").SetActive(true);
+            if (m_mainMenuPanel) {
+                m_mainMenuPanel.SetActive(true);
+            }
             m_firstTime = false;
         }
     }

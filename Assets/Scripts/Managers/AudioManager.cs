@@ -14,15 +14,17 @@ public class AudioManager : MonoBehaviour {
     public AudioSource InsideSource;
     private float outsideVolume;
     private float insideVolume;
+    private float ambienceVolume;
 
     // UI related
     public AudioSource UISource;
     public AudioClip[] UISounds;
 
     private void Start() {
-        // Set initial BGM volume
+        // Set initial volumes
         outsideVolume = OutsideSource.volume;
         insideVolume = InsideSource.volume;
+        ambienceVolume = AmbienceSource.volume;
     }
 
     public void SetMasterLevel(float _volume) {
@@ -107,10 +109,10 @@ public class AudioManager : MonoBehaviour {
     }
 
     public void StartOutsideAmbience() {
-        StartCoroutine(PlayAmbience(0.0f, 1.0f));
+        StartCoroutine(PlayAmbience(0.0f, ambienceVolume));
     }
     public void StopOutsideAmbience() {
-        StartCoroutine(PlayAmbience(1.0f, 0.0f));
+        StartCoroutine(PlayAmbience(ambienceVolume, 0.0f));
     }
     private IEnumerator PlayAmbience(float _start, float _end) {
         if (_start < _end) {

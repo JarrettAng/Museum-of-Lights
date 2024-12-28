@@ -1165,8 +1165,16 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 2662b5bfbcce60140a7941bf672f5cf1, type: 3}
   - {fileID: 8300000, guid: c24d609ae9c1b854e9696475e1785517, type: 3}
   - {fileID: 8300000, guid: a4c891ab597632b4fb858c6f820a6ec9, type: 3}
-  darkStoneFS: []
-  cliffFS: []
+  darkStoneFS:
+  - {fileID: 8300000, guid: c3fe47e7f7011ea449047a1909004a93, type: 3}
+  - {fileID: 8300000, guid: 9ac349183ed890a4bb37869cd8c03ac8, type: 3}
+  - {fileID: 8300000, guid: d52f3611fa0def04693af9c8f595d459, type: 3}
+  - {fileID: 8300000, guid: 9ac349183ed890a4bb37869cd8c03ac8, type: 3}
+  cliffFS:
+  - {fileID: 8300000, guid: c3fe47e7f7011ea449047a1909004a93, type: 3}
+  - {fileID: 8300000, guid: 9ac349183ed890a4bb37869cd8c03ac8, type: 3}
+  - {fileID: 8300000, guid: d52f3611fa0def04693af9c8f595d459, type: 3}
+  - {fileID: 8300000, guid: 9ac349183ed890a4bb37869cd8c03ac8, type: 3}
   woodFS:
   - {fileID: 8300000, guid: 42cbc3a6141565f4ebd8077653795918, type: 3}
   - {fileID: 8300000, guid: bd0c5e0e300c07e4499ff6190c9f2f16, type: 3}
@@ -2148,6 +2156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad5883ac4a888af41b15258c5bacd287, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_mainMenuPanel: {fileID: 0}
 --- !u!143 &7115969560686216076
 CharacterController:
   m_ObjectHideFlags: 0
