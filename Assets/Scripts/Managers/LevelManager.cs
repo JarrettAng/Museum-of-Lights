@@ -39,4 +39,22 @@ public class LevelManager : MonoBehaviour
         SceneManager.LoadScene("GameEnd");
         camera.nearClipPlane = 0.3f;
     }
+
+    // Hacked for game jam
+    public void StartInsideBGM() {
+        AudioManager audioManager = FindFirstObjectByType<AudioManager>();
+        audioManager.SwapToInsideBGM();
+    }
+    public void StartOutsideBGM() {
+        AudioManager audioManager = FindFirstObjectByType<AudioManager>();
+        audioManager.SwapToOutsideBGM();
+    }
+    public void StartOutsideAmbience() {
+        AudioManager audioManager = FindFirstObjectByType<AudioManager>();
+        audioManager.StartOutsideAmbience();
+    }
+    public void StopOutsideAmbience() {
+        AudioManager audioManager = FindFirstObjectByType<AudioManager>();
+        audioManager.StopOutsideAmbience();
+    }
 }

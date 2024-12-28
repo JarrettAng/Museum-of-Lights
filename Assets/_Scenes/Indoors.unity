@@ -4695,6 +4695,30 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1770940658}
         m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
+        m_MethodName: StartOutsideBGM
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1770940658}
+        m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
+        m_MethodName: StartOutsideAmbience
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1770940658}
+        m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
         m_MethodName: LoadOutdoors
         m_Mode: 1
         m_Arguments:
@@ -43166,6 +43190,8 @@ MonoBehaviour:
   settingsMenuPanel: {fileID: 656986321}
   pauseMenuPanel: {fileID: 1695140588}
   creditsPanel: {fileID: 190018645}
+  ambienceAudioSource: {fileID: 0}
+  bgmAudioSource: {fileID: 0}
 --- !u!1 &1006950979
 GameObject:
   m_ObjectHideFlags: 0
@@ -53161,9 +53187,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4532997028434664876, guid: 5dde1db2fe9faa34eb86e6b4fd2ffee2, type: 3}
+      propertyPath: BGMSource
+      value: 
+      objectReference: {fileID: 1250616250}
+    - target: {fileID: 5904845301066346009, guid: 5dde1db2fe9faa34eb86e6b4fd2ffee2, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6638748631350894520, guid: 5dde1db2fe9faa34eb86e6b4fd2ffee2, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8020919606418550961, guid: 5dde1db2fe9faa34eb86e6b4fd2ffee2, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8012679282648659201, guid: 5dde1db2fe9faa34eb86e6b4fd2ffee2, type: 3}
@@ -53171,6 +53209,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5dde1db2fe9faa34eb86e6b4fd2ffee2, type: 3}
+--- !u!82 &1250616250 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 5904845301066346009, guid: 5dde1db2fe9faa34eb86e6b4fd2ffee2, type: 3}
+  m_PrefabInstance: {fileID: 1250616249}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1253056434
 GameObject:
   m_ObjectHideFlags: 0
