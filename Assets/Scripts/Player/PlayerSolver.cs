@@ -19,27 +19,55 @@ public class PlayerSolver : MonoBehaviour
     private Quaternion m_targetRotation;
 
     private void Update() {
-        if (Input.GetKeyDown(KeyCode.E) && r_currentLookSpot) {
-            r_pMovement.m_Enabled = m_puzzleMode;
-            r_pCamera.m_Enabled = m_puzzleMode;
+        if (Input.GetKeyDown(KeyCode.E)) {
+            if (r_currentLookSpot) {
+                r_pMovement.m_Enabled = m_puzzleMode;
+                r_pCamera.m_Enabled = m_puzzleMode;
 
-            m_puzzleMode = !m_puzzleMode;
-            if (m_puzzleMode) {
-                r_currentLookSpot.EnterPuzzle();
+                m_puzzleMode = !m_puzzleMode;
+                if (m_puzzleMode) {
+                    r_currentLookSpot.EnterPuzzle();
 
-                if (m_lookAnim != null) {
-                    StopCoroutine(m_lookAnim);
-                    m_lookAnim = null;
+                    if (m_lookAnim != null) {
+                        StopCoroutine(m_lookAnim);
+                        m_lookAnim = null;
+                    }
+                    m_lookAnim = StartCoroutine(LookAtPuzzle());
                 }
-                m_lookAnim = StartCoroutine(LookAtPuzzle());
+                else {
+                    r_currentLookSpot.ExitPuzzle();
+
+                    if (m_lookAnim != null) {
+                        StopCoroutine(m_lookAnim);
+                        m_lookAnim = null;
+                    }
+                }
             }
+            // Sanity check to leave puzzle mode in case of error (not in puzzle spot for some reason)
             else {
-                r_currentLookSpot.ExitPuzzle();
+                r_pMovement.m_Enabled = true;
+                r_pCamera.m_Enabled = true;
+                m_puzzleMode = false;
 
                 if (m_lookAnim != null) {
                     StopCoroutine(m_lookAnim);
                     m_lookAnim = null;
                 }
+            }
+        }
+        // Sanity check, escape to leave puzzle mode
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            r_pMovement.m_Enabled = true;
+            r_pCamera.m_Enabled = true;
+            m_puzzleMode = false;
+
+            if (m_lookAnim != null) {
+                StopCoroutine(m_lookAnim);
+                m_lookAnim = null;
+            }
+
+            if (r_currentLookSpot) {
+                r_currentLookSpot.ExitPuzzle();
             }
         }
     }
